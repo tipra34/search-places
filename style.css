@@ -1,0 +1,19 @@
+.wrapper{
+    max-width: 960px;
+    margin: 0 auto;
+}
+.flex-container{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    
+}
+.flex-container>*{
+    flex-basis: 320px;
+    flex-grow: 1;
+}
+
+#map{
+    height: 400px;
+    width: 320px;
+}

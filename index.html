@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+  <title>Traveller</title>
+  <meta name="description" content="Find out about places">
+  <meta name="author" content="arpit">
+</head>
+<body>
+    <header>
+        <h1>Search Places</h1>
+    </header>
+    <input id="search-input" type="text" placeholder="Search for a Place">
+    <div id="map"></div>
+    <div id="wiki-links">
+      <ul data-bind="foreach: wikiLinks">
+        <a data-bind="attr: {href: link}">
+          <h2 data-bind="text: heading"></h2>
+        </a>
+      </ul>
+    </div>
+    <div data-bind="foreach: nytArticles">
+      <h3 data-bind="text: headline.main"></h3>
+      <p data-bind="text: lead_paragraph"></p>
+      <a data-bind="attr: {href: web_url}">goto article</a>
+    </div>
+    <div data-bind="foreach: imageUrls">
+      <ul>
+        <li><img data-bind="attr: {src: $data}"></li>
+    <script src="js/lib/knockout-3.2.0.js"></script>
+    <script src="js/lib/jquery-3.1.1.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWulSDCx3g8LX_z4EfwiBxTcNW_WQzh5U&callback=setupMap&libraries=places"
+    async defer></script>
+</body>
+</html>
