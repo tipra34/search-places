@@ -28,15 +28,21 @@ header h1{
 #map,#wiki-links{
     width: 50%;
     flex-grow: 1;
+    margin:0 auto;
     flex-basis: 320px;
 }
 #map{
     height: 400px;
     margin: auto;
 }
+
 #wiki-links{
-    margin-left: 20px;
     text-align: center;
+}
+
+#wiki-links ul{
+  list-style-type: none;
+  padding: 0;
 }
 
 #wiki-links a{

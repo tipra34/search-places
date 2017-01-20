@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Search Places</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"
   <meta name="description" content="Find out about places">
   <meta name="author" content="arpit">
   <link rel="stylesheet" href="style/bootstrap.min.css">
@@ -28,7 +29,6 @@
     <div class="wrapper">
       <div id="news" data-bind="visible: nytArticles().length">
           <h2>News</h2>
-            <div class="wrapper">
               <ul data-bind="foreach: nytArticles">
                   <li>
                       <h3 data-bind="text: headline.main"></h3>
@@ -36,7 +36,6 @@
                       <a data-bind="attr: {href: web_url}">goto article</a>
                   </li>
               </ul>
-          </div>
       </div>
     </div>
     <div id ="images" data-bind="visible: imageUrls().length">
