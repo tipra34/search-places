@@ -1,5 +1,4 @@
 ////////object model for autocomplete searchbar inputId: id of input element as string
-
 var SearchBar = function(inputId){
   var self = this;
   self.input = document.getElementById(inputId);
@@ -7,7 +6,6 @@ var SearchBar = function(inputId){
   var options = {types : ['geocode']};
 
   self.autocomplete = new google.maps.places.Autocomplete(self.input,options);
-
   self.autocomplete.addListener("place_changed", function(){
     var place = self.autocomplete.getPlace();
     if(!place.formatted_address){return;};
@@ -110,7 +108,7 @@ var Images = function(){
 }
 
 ////// main controller for app
-
+var place;
 var ViewModel = function(){
   var self = this;
 
@@ -123,14 +121,15 @@ var ViewModel = function(){
   this.wikiLinks = wiki.links;
   this.nytArticles = nyt.articles;
   this.imageUrls = images.imageUrls;
-  var place = ko.computed(function(){
+  this.place = ko.computed(function(){
     return search.place();
   });
 
-  place.subscribe(wiki.loadLinks);
-  place.subscribe(map.positionMapAndMarker);
-  place.subscribe(nyt.loadArticles);
-  place.subscribe(images.loadImages);
+  this.place.subscribe(map.positionMapAndMarker);
+  this.place.subscribe(wiki.loadLinks);
+  this.place.subscribe(nyt.loadArticles);
+  this.place.subscribe(images.loadImages);
+  place=this.place
 }
 
 //////method invoked by google map api after loading
@@ -140,6 +139,3 @@ function setupMap(){
   ko.applyBindings(new ViewModel());
 
 }
-
-
-////////news api https://newsapi.org/v1/articles?source=techcrunch&apiKey=c29e3a12aea5480b94987bf698c36328
